@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * 企微消息更新模板
- * @author canghe
+ * @author zw
  */
 @Data
 public class WxUpdateMessage {

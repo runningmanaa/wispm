@@ -3,7 +3,7 @@ package com.laigeoffer.pmhub.base.core.constant;
 /**
  * 服务名称
  *
- * @author canghe
+ * @author zw
  */
 public class ServiceNameConstants {
     /**

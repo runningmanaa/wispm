@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * stream 流工具类
  *
- * @author canghe
+ * @author zw
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class StreamUtils {

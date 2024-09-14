@@ -1,7 +1,7 @@
 package com.laigeoffer.pmhub.project.domain;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-12 14:06
  */
 
@@ -19,7 +19,7 @@ import java.util.Date;
 
 /**
  * 项目-任务表
- * @author canghe
+ * @author zw
  * @date 2022-12-12 13:57
  */
 @Data

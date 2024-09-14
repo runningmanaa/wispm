@@ -23,7 +23,7 @@
 ///**
 // * 设置Anonymous注解允许匿名访问的url
 // *
-// * @author canghe
+// * @author zw
 // */
 //@Configuration
 //public class PermitAllUrlProperties implements InitializingBean, ApplicationContextAware {

@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * 数据字典信息
  *
- * @author canghe
+ * @author zw
  */
 @RestController
 @RequestMapping("/system/dict/data")

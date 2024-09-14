@@ -28,7 +28,7 @@ import java.util.Collections;
 /**
  * message消费者
  *
- * @author canghe
+ * @author zw
  * @date 2023/07/21
  */
 @Component

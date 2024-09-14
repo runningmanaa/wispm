@@ -8,7 +8,7 @@ import com.laigeoffer.pmhub.project.domain.vo.project.log.ProjectLogVO;
 import com.laigeoffer.pmhub.project.domain.ProjectLog;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-21 11:40
  */
 public interface ProjectLogService extends IService<ProjectLog> {

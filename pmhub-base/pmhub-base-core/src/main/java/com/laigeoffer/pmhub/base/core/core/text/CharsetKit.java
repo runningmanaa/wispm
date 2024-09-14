@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * 字符集工具类
  *
- * @author canghe
+ * @author zw
  */
 public class CharsetKit {
     /**

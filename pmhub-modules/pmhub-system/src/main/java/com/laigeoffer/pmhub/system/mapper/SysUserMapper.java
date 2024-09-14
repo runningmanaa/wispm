@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 用户表 数据层
  *
- * @author canghe
+ * @author zw
  */
 @Mapper
 public interface SysUserMapper {

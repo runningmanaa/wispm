@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 监听器需要的mapper
- * @author canghe
+ * @author zw
  */
 @Mapper
 public interface ListenerMapper {

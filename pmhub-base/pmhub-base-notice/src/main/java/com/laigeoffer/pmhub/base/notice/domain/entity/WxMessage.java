@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * 企微消息模板
- * @author canghe
+ * @author zw
  */
 @Data
 public class WxMessage {

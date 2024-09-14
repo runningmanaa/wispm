@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * 企微返回消息
- * @author canghe
+ * @author zw
  */
 @Data
 public class WxResult {

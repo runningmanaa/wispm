@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-12 14:27
  */
 public interface ProjectLogMapper extends BaseMapper<ProjectLog> {

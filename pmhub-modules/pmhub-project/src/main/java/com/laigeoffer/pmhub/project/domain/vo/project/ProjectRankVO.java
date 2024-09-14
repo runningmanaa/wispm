@@ -3,7 +3,7 @@ package com.laigeoffer.pmhub.project.domain.vo.project;
 import java.math.BigDecimal;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-12 10:00
  */
 public class ProjectRankVO extends ProjectVO {

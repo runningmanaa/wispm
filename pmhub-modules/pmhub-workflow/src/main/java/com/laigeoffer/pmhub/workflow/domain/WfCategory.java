@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * 流程分类对象 wf_category
  *
- * @author canghe
+ * @author zw
  * @date 2022-01-15
  */
 @Data

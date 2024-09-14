@@ -10,7 +10,7 @@ import com.laigeoffer.pmhub.project.domain.vo.project.member.ProjectMemberResVO;
 import java.util.List;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-15 14:29
  */
 public interface ProjectMemberService extends IService<ProjectMember> {

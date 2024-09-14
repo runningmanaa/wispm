@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 审批提醒
- * @author canghe
+ * @author zw
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({

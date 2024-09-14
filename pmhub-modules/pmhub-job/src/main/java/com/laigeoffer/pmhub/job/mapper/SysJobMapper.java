@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 调度任务信息 数据层
  *
- * @author canghe
+ * @author zw
  */
 @Mapper
 public interface SysJobMapper {

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Feign 配置注册
  *
- * @author canghe
+ * @author zw
  **/
 @Configuration
 public class FeignAutoConfiguration

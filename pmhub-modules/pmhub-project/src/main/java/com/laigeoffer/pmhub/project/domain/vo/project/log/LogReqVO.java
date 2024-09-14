@@ -1,7 +1,7 @@
 package com.laigeoffer.pmhub.project.domain.vo.project.log;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-21 14:30
  */
 public class LogReqVO {

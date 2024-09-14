@@ -1,7 +1,7 @@
 package com.laigeoffer.pmhub.project.domain.vo.project.file;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-16 10:56
  */
 public class FileVO {

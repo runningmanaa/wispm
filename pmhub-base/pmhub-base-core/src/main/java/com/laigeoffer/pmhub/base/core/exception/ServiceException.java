@@ -3,7 +3,7 @@ package com.laigeoffer.pmhub.base.core.exception;
 /**
  * 业务异常
  *
- * @author canghe
+ * @author zw
  */
 public final class ServiceException extends RuntimeException {
     private static final long serialVersionUID = 1L;

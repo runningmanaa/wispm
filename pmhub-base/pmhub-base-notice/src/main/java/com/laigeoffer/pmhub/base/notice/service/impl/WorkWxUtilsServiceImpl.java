@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 企微系统交互工具接口
- * @author canghe
+ * @author zw
  */
 @Service
 public class WorkWxUtilsServiceImpl implements OaUtilsService {

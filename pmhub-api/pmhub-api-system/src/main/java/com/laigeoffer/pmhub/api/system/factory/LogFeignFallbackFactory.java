@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * 日志服务降级处理
  * 
- * @author canghe
+ * @author zw
  */
 @Component
 public class LogFeignFallbackFactory implements FallbackFactory<LogFeignService>

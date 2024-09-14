@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 全局异常处理器
  *
- * @author canghe
+ * @author zw
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {

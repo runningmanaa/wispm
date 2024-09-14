@@ -5,7 +5,7 @@ import com.laigeoffer.pmhub.system.domain.pmhubOAuth2User;
 
 /**
  * OAuth2 服务器
- * @author canghe
+ * @author zw
  * @date 2024/01/09
  */
 public interface IOAuth2Service {

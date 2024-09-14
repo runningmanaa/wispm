@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 /**
  * 流程分类业务对象
  *
- * @author canghe
+ * @author zw
  * @date 2022-01-15
  */
 

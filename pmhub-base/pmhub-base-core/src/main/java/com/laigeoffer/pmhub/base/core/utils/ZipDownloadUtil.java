@@ -12,7 +12,7 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * 文件打包下载
- * @author canghe
+ * @author zw
  */
 public class ZipDownloadUtil {
 

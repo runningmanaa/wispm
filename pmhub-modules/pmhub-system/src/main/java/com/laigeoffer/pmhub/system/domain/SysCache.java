@@ -6,7 +6,7 @@ import com.laigeoffer.pmhub.base.core.utils.StringUtils;
 /**
  * 缓存信息
  *
- * @author canghe
+ * @author zw
  */
 public class SysCache {
     /**

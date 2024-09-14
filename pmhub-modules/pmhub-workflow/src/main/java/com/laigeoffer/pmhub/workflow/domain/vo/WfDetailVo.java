@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 流程详情视图对象
  *
- * @author canghe
+ * @author zw
  * @createTime 2022/8/7 15:01
  */
 @Data

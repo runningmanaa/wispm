@@ -3,7 +3,7 @@ package com.laigeoffer.pmhub.base.core.exception;
 /**
  * 工具类异常
  *
- * @author canghe
+ * @author zw
  */
 public class UtilException extends RuntimeException {
     private static final long serialVersionUID = 8247610319171014183L;

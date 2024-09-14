@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-12 10:36
  */
 public class TaskResVO {

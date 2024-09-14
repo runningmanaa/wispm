@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 用户授权登录 数据层
  *
- * @author canghe
+ * @author zw
  */
 @Mapper
 public interface pmhubOAuth2AgreeMapper extends BaseMapper<pmhubOAuth2Agree> {

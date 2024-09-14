@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @author canghe
+ * @author zw
  * @date 2022-12-06 15:46
  */
 @EnableTransactionManagement(proxyTargetClass = true)
