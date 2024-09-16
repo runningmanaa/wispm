@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
  * @description DistributedLock 分布式锁注解
  * @create 2024-06-17-10:16
  */
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
+@Target({ElementType.METHOD})       // 指定了 DistributedLock 注解可以应用于方法
+@Retention(RetentionPolicy.RUNTIME) // 指定了 DistributedLock 注解在运行时是可用的
+@Documented  // 表明 DistributedLock 注解会被 javadoc 工具记录，注解的文档将被包含在 javadoc 中
 public @interface DistributedLock {
 
     /**
@@ -31,7 +31,6 @@ public @interface DistributedLock {
 
     /**
      * 获取锁的最大尝试时间 ，会尝试tryTime时间获取锁，在该时间内获取成功则返回，否则抛出获取锁超时异常，tryLok=true时，该值必须大于0。
-     *
      */
     long tryTime() default 0;
 

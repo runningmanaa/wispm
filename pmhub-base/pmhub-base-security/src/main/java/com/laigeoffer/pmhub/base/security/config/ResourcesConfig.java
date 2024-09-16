@@ -1,5 +1,6 @@
-package com.laigeoffer.pmhub.base.core.config;
+package com.laigeoffer.pmhub.base.security.config;
 
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.constant.Constants;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -18,7 +19,7 @@ public class ResourcesConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         /** 本地文件上传路径 */
         registry.addResourceHandler(Constants.RESOURCE_PREFIX + "/**")
-                .addResourceLocations("file:" + pmhubConfig.getProfile() + "/");
+                .addResourceLocations("file:" + PmhubConfig.getProfile() + "/");
     }
 
     /**
@@ -27,7 +28,7 @@ public class ResourcesConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         // 设置允许跨域的路由
-        registry.addMapping(pmhubConfig.getProfile()  + "/**")
+        registry.addMapping(PmhubConfig.getProfile()  + "/**")
                 // 设置允许跨域请求的域名
                 .allowedOrigins("*")
                 // 设置允许的方法

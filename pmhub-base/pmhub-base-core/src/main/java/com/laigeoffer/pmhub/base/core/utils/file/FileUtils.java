@@ -1,11 +1,9 @@
 package com.laigeoffer.pmhub.base.core.utils.file;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.utils.DateUtils;
 import com.laigeoffer.pmhub.base.core.utils.StringUtils;
-import com.laigeoffer.pmhub.base.core.utils.file.FileTypeUtils;
-import com.laigeoffer.pmhub.base.core.utils.file.MimeTypeUtils;
 import com.laigeoffer.pmhub.base.core.utils.uuid.IdUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -88,7 +86,7 @@ public class FileUtils {
      * @throws IOException IO异常
      */
     public static String writeImportBytes(byte[] data) throws IOException {
-        return writeBytes(data, pmhubConfig.getImportPath());
+        return writeBytes(data, PmhubConfig.getImportPath());
     }
 
     /**

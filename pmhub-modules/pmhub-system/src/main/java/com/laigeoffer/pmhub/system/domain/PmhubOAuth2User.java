@@ -8,9 +8,9 @@ import lombok.Data;
  * @date 2024/01/10
  */
 @Data
-public class pmhubOAuth2User {
+public class PmhubOAuth2User {
 
-    public pmhubOAuth2User(){
+    public PmhubOAuth2User(){
         this.locale = "zh_CN";
     }
 

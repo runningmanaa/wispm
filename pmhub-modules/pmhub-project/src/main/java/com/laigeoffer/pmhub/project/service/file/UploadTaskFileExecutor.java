@@ -1,6 +1,6 @@
 package com.laigeoffer.pmhub.project.service.file;
 
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.core.domain.model.LoginUser;
 import com.laigeoffer.pmhub.base.core.enums.LogTypeEnum;
 import com.laigeoffer.pmhub.base.core.enums.ProjectStatusEnum;
@@ -43,8 +43,8 @@ public class UploadTaskFileExecutor extends UploadAbstractExecutor {
     @Transactional(rollbackFor = Exception.class)
     public FileVO upload(LoginUser user, MultipartFile file, String id) throws Exception {
         log.info("任务文件上传的任务id:{}", id);
-        String taskPath = ProjectFileUtil.uploadTaskFile(pmhubConfig.getTaskPath(), file, MimeTypeUtils.DEFAULT_ALLOWED_EXTENSION);
-        String pn = ProjectFileUtil.getPathName(pmhubConfig.getTaskPath(), file);
+        String taskPath = ProjectFileUtil.uploadTaskFile(PmhubConfig.getTaskPath(), file, MimeTypeUtils.DEFAULT_ALLOWED_EXTENSION);
+        String pn = ProjectFileUtil.getPathName(PmhubConfig.getTaskPath(), file);
         String projectId = projectTaskMapper.selectById(id).getProjectId();
         ProjectFile projectFile = new ProjectFile();
         projectFile.setFileSize(new BigDecimal(String.valueOf(file.getSize())).divide(new BigDecimal("1024"), 2, RoundingMode.HALF_UP));

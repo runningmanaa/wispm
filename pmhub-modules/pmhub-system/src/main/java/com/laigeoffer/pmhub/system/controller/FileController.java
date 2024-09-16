@@ -1,6 +1,6 @@
 package com.laigeoffer.pmhub.system.controller;
 
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.config.ServerConfig;
 import com.laigeoffer.pmhub.base.core.constant.Constants;
 import com.laigeoffer.pmhub.base.core.core.domain.AjaxResult;
@@ -50,7 +50,7 @@ public class FileController {
                 throw new Exception(StringUtils.format("文件名称({})非法，不允许下载。 ", fileName));
             }
             String realFileName = System.currentTimeMillis() + fileName.substring(fileName.indexOf("_") + 1);
-            String filePath = pmhubConfig.getDownloadPath() + fileName;
+            String filePath = PmhubConfig.getDownloadPath() + fileName;
 
             response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
             FileUtils.setAttachmentResponseHeader(response, realFileName);
@@ -70,7 +70,7 @@ public class FileController {
     public AjaxResult uploadFile(MultipartFile file) throws Exception {
         try {
             // 上传文件路径
-            String filePath = pmhubConfig.getUploadPath();
+            String filePath = PmhubConfig.getUploadPath();
             // 上传并返回新文件名称
             String fileName = FileUploadUtils.upload(filePath, file);
             String url = serverConfig.getUrl() + fileName;
@@ -92,7 +92,7 @@ public class FileController {
     public AjaxResult uploadFiles(List<MultipartFile> files) throws Exception {
         try {
             // 上传文件路径
-            String filePath = pmhubConfig.getUploadPath();
+            String filePath = PmhubConfig.getUploadPath();
             List<String> urls = new ArrayList<String>();
             List<String> fileNames = new ArrayList<String>();
             List<String> newFileNames = new ArrayList<String>();
@@ -128,7 +128,7 @@ public class FileController {
                 throw new Exception(StringUtils.format("资源文件({})非法，不允许下载。 ", resource));
             }
             // 本地资源路径
-            String localPath = pmhubConfig.getProfile();
+            String localPath = PmhubConfig.getProfile();
             // 数据库资源地址
             String downloadPath = localPath + StringUtils.substringAfter(resource, Constants.RESOURCE_PREFIX);
             // 下载名称

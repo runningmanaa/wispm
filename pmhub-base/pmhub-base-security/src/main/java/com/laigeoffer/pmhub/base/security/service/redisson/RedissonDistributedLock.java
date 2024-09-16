@@ -39,7 +39,7 @@ public class RedissonDistributedLock implements IDistributedLock {
         if (lockTime > 0L) {
             lock.lock(lockTime, unit);
         } else {
-            // 具有Watch Dog 自动延期机制 默认续30s 每隔30/3=10 秒续到30s
+            // 具有 Watch Dog 自动延期机制 默认续30s 每隔30/3=10 秒续到30s
             lock.lock();
         }
         return new ILock(lock, this);

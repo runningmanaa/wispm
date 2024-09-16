@@ -30,7 +30,7 @@ public interface IDistributedLock {
     ILock lock(String key, long lockTime, TimeUnit unit, boolean fair);
 
     /**
-     * 尝试获取锁，30秒获取不到超时异常，锁默认30秒失效
+     * 尝试获取锁，获取不到超时异常，锁默认30秒失效
      *
      * @param key     锁的key
      * @param tryTime 获取锁的最大尝试时间

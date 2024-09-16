@@ -10,7 +10,7 @@ import lombok.Data;
  */
 @Data
 @TableName("pmhub_oauth2_agree")
-public class pmhubOAuth2Agree {
+public class PmhubOAuth2Agree {
 
     String id;
 

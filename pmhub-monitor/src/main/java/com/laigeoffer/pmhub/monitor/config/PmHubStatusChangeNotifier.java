@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
  * @create 2024-05-16-17:32
  */
 @Component
-public class pmhubStatusChangeNotifier extends AbstractStatusChangeNotifier {
+class pmhubStatusChangeNotifier extends AbstractStatusChangeNotifier {
     public pmhubStatusChangeNotifier(InstanceRepository repository) {
         super(repository);
     }

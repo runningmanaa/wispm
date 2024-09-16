@@ -5,7 +5,7 @@ import com.alibaba.excel.write.builder.ExcelWriterSheetBuilder;
 import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy;
 import com.laigeoffer.pmhub.base.core.annotation.Excel;
 import com.laigeoffer.pmhub.base.core.annotation.Excels;
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.convert.ExcelBigNumberConvert;
 import com.laigeoffer.pmhub.base.core.core.domain.AjaxResult;
 import com.laigeoffer.pmhub.base.core.core.text.Convert;
@@ -1100,7 +1100,7 @@ public class ExcelUtil<T> {
      * @param filename 文件名称
      */
     public String getAbsoluteFile(String filename) {
-        String downloadPath = pmhubConfig.getDownloadPath() + filename;
+        String downloadPath = PmhubConfig.getDownloadPath() + filename;
         File desc = new File(downloadPath);
         if (!desc.getParentFile().exists()) {
             desc.getParentFile().mkdirs();

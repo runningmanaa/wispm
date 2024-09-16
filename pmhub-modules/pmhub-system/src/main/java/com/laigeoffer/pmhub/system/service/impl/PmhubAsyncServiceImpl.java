@@ -5,9 +5,9 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.log.LogFactory;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.laigeoffer.pmhub.base.core.utils.file.FileUtils;
-import com.laigeoffer.pmhub.system.domain.pmhubAsync;
-import com.laigeoffer.pmhub.system.mapper.pmhubAsyncMapper;
-import com.laigeoffer.pmhub.system.service.IpmhubAsyncService;
+import com.laigeoffer.pmhub.system.domain.PmhubAsync;
+import com.laigeoffer.pmhub.system.mapper.PmhubAsyncMapper;
+import com.laigeoffer.pmhub.system.service.IPmhubAsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,10 +20,10 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
+public class PmhubAsyncServiceImpl implements IPmhubAsyncService {
 
     @Autowired
-    pmhubAsyncMapper pmhubAsyncMapper;
+    PmhubAsyncMapper pmhubAsyncMapper;
 
     /**
      * 创建异步任务记录
@@ -33,8 +33,8 @@ public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
      * @param createBy  创建者
      */
     @Override
-    public pmhubAsync addAsyncJob(String asyncName, String asyncType, String createBy) {
-        pmhubAsync pmhubAsync = new pmhubAsync(asyncName,asyncType,createBy);
+    public PmhubAsync addAsyncJob(String asyncName, String asyncType, String createBy) {
+        PmhubAsync pmhubAsync = new PmhubAsync(asyncName,asyncType,createBy);
         pmhubAsyncMapper.insert(pmhubAsync);
         return pmhubAsync;
     }
@@ -45,7 +45,7 @@ public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
      * @param pmhubAsync 任务信息
      */
     @Override
-    public void updateAsyncJob(pmhubAsync pmhubAsync) {
+    public void updateAsyncJob(PmhubAsync pmhubAsync) {
         pmhubAsync.setUpdateTime(new Date());
         pmhubAsyncMapper.updateById(pmhubAsync);
     }
@@ -54,12 +54,12 @@ public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
      * 查询异步任务信息
      *
      * @param pmhubAsync
-     * @return {@link List}<{@link pmhubAsync}>
+     * @return {@link List}<{@link PmhubAsync}>
      */
     @Override
-    public List<pmhubAsync> list(pmhubAsync pmhubAsync) {
+    public List<PmhubAsync> list(PmhubAsync pmhubAsync) {
         pmhubAsync.setAsyncLog(null);
-        QueryWrapper<pmhubAsync> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<PmhubAsync> queryWrapper = new QueryWrapper<>();
         // 如果 asyncName 字段不为空，则添加模糊查询条件
         if (pmhubAsync.getAsyncName() != null && !pmhubAsync.getAsyncName().isEmpty()) {
             // 添加模糊查询条件
@@ -90,13 +90,13 @@ public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
      * 查询单条异步任务信息
      *
      * @param id id
-     * @return {@link List}<{@link pmhubAsync}>
+     * @return {@link List}<{@link PmhubAsync}>
      */
     @Override
-    public pmhubAsync load(String id) {
-        pmhubAsync pmhubAsync = new pmhubAsync();
+    public PmhubAsync load(String id) {
+        PmhubAsync pmhubAsync = new PmhubAsync();
         pmhubAsync.setId(id);
-        List<pmhubAsync> pmhubAsyncs = list(pmhubAsync);
+        List<PmhubAsync> pmhubAsyncs = list(pmhubAsync);
         if (!pmhubAsyncs.isEmpty()){
             return pmhubAsyncs.get(0);
         }else {
@@ -113,7 +113,7 @@ public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
     @Override
     public void delete(String[] ids) {
         for (String id:ids){
-            pmhubAsync pmhubAsync = new pmhubAsync();
+            PmhubAsync pmhubAsync = new PmhubAsync();
             pmhubAsync.setId(id);
             delete(pmhubAsync);
         }
@@ -127,7 +127,7 @@ public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
      */
     @Override
     public void downloadFile(String id, String user, HttpServletResponse response) {
-        pmhubAsync pmhubAsync = load(id);
+        PmhubAsync pmhubAsync = load(id);
         if (pmhubAsync ==null){
             throw new RuntimeException("不存在的任务");
         }else if (pmhubAsync.getFile()==null|| pmhubAsync.getFile().isEmpty()){
@@ -148,7 +148,7 @@ public class pmhubAsyncServiceImpl implements IpmhubAsyncService {
         }
     }
 
-    private void delete(pmhubAsync pmhubAsync) {
+    private void delete(PmhubAsync pmhubAsync) {
         pmhubAsync = pmhubAsyncMapper.selectById(pmhubAsync.getId());
 
         if (pmhubAsync ==null){

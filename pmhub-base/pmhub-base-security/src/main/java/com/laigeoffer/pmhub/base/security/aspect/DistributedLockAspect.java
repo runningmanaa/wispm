@@ -47,19 +47,27 @@ public class DistributedLockAspect {
      */
     private DefaultParameterNameDiscoverer nameDiscoverer = new DefaultParameterNameDiscoverer();
 
+    /**
+     * 定义一个切点，匹配所有使用了 @DistributedLock 注解的方法
+     */
     @Pointcut("@annotation(com.laigeoffer.pmhub.base.security.annotation.DistributedLock)")
     public void distributorLock() {
     }
 
+    /**
+     * 定义一个环绕通知，在匹配到的切点方法执行前后执行
+     * 这个通知中，实现了分布式锁的获取和释放逻辑
+     * @param pjp: 被拦截的方法
+     * @return
+     * @throws Throwable
+     */
     @Around("distributorLock()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
-        // 获取DistributedLock
-        DistributedLock distributedLock = this.getDistributedLock(pjp);
-        // 获取 lockKey
-        String lockKey = this.getLockKey(pjp, distributedLock);
+        DistributedLock distributedLock = this.getDistributedLock(pjp); // 获取 @DistributedLock 注解的实例
+        String lockKey = this.getLockKey(pjp, distributedLock);         // 生成一个用于分布式锁的 key
         ILock lockObj = null;
         try {
-            // 加锁，tryLok = true,并且tryTime > 0时，尝试获取锁，获取不到超时异常
+            // 加锁，tryLok = true, 并且tryTime > 0时，尝试获取锁，获取不到超时异常
             if (distributedLock.tryLok()) {
                 if(distributedLock.tryTime() <= 0){
                     throw new UtilException("tryTime must be greater than 0");
@@ -83,15 +91,18 @@ public class DistributedLockAspect {
     }
 
     /**
+     * 从当前的连接点 pjp 中提取 @DistributedLock 注解实例
      * @param pjp
      * @return
      * @throws NoSuchMethodException
      */
     private DistributedLock getDistributedLock(ProceedingJoinPoint pjp) throws NoSuchMethodException {
-        String methodName = pjp.getSignature().getName();
-        Class clazz = pjp.getTarget().getClass();
-        Class<?>[] par = ((MethodSignature) pjp.getSignature()).getParameterTypes();
-        Method lockMethod = clazz.getMethod(methodName, par);
+        String methodName = pjp.getSignature().getName();      // 获取被拦截方法的名称
+        Class clazz = pjp.getTarget().getClass();              // 获取被拦截目标对象的 Class 对象。
+        Class<?>[] par = ((MethodSignature) pjp.getSignature()).getParameterTypes();  // 获取被拦截方法的参数类型数组。
+        Method lockMethod = clazz.getMethod(methodName, par);  // 根据方法名称和参数类型数组，获取被拦截方法的 Method 对象
+
+        // 获取方法上声明的 @DistributedLock 注解实例，并返回
         DistributedLock distributedLock = lockMethod.getAnnotation(DistributedLock.class);
         return distributedLock;
     }
@@ -121,48 +132,21 @@ public class DistributedLockAspect {
      * @return
      */
     private String getLockKey(ProceedingJoinPoint pjp, DistributedLock distributedLock) {
+        //  从 @DistributedLock 注解实例中获取 key 和 keyPrefix 属性
         String lockKey = distributedLock.key();
         String keyPrefix = distributedLock.keyPrefix();
+
         if (StringUtils.isBlank(lockKey)) {
             throw new UtilException("Lok key cannot be empty");
         }
         if (lockKey.contains("#")) {
-            this.checkSpEL(lockKey);
+            this.checkSpEL(lockKey);        // 验证 SpEL 表达式是否有效
             MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
-            // 获取方法参数值
-            Object[] args = pjp.getArgs();
+            Object[] args = pjp.getArgs();  // 获取被拦截方法的参数值数组
             lockKey = getValBySpEL(lockKey, methodSignature, args);
         }
         lockKey = StringUtils.isBlank(keyPrefix) ? lockKey : keyPrefix + lockKey;
         return lockKey;
-    }
-
-    /**
-     * 解析spEL表达式
-     *
-     * @param spEL
-     * @param methodSignature
-     * @param args
-     * @return
-     */
-    private String getValBySpEL(String spEL, MethodSignature methodSignature, Object[] args) {
-        // 获取方法形参名数组
-        String[] paramNames = nameDiscoverer.getParameterNames(methodSignature.getMethod());
-        if (paramNames == null || paramNames.length < 1) {
-            throw new UtilException("Lok key cannot be empty");
-        }
-        Expression expression = spelExpressionParser.parseExpression(spEL);
-        // spring的表达式上下文对象
-        EvaluationContext context = new StandardEvaluationContext();
-        // 给上下文赋值
-        for (int i = 0; i < args.length; i++) {
-            context.setVariable(paramNames[i], args[i]);
-        }
-        Object value = expression.getValue(context);
-        if (value == null) {
-            throw new UtilException("The parameter value cannot be null");
-        }
-        return value.toString();
     }
 
     /**
@@ -179,5 +163,37 @@ public class DistributedLockAspect {
             log.error("spEL表达式解析异常", e);
             throw new UtilException("Invalid SpEL expression [" + spEL + "]");
         }
+    }
+
+    /**
+     * 解析spEL表达式
+     *
+     * @param spEL
+     * @param methodSignature
+     * @param args
+     * @return
+     */
+    private String getValBySpEL(String spEL, MethodSignature methodSignature, Object[] args) {
+        String[] paramNames = nameDiscoverer.getParameterNames(methodSignature.getMethod()); // 获取被拦截方法的参数名数组
+        if (paramNames == null || paramNames.length < 1) {
+            throw new UtilException("Lok key cannot be empty");
+        }
+
+        // 解析传入的 SpEL 表达式字符串，得到一个 Expression 对象
+        Expression expression = spelExpressionParser.parseExpression(spEL);
+
+        // 创建表达式上下文对象，作为 SpEL 表达式解析的上下文环境
+        EvaluationContext context = new StandardEvaluationContext();
+        // 给上下文对象赋值，被拦截方法参数名：参数值
+        for (int i = 0; i < args.length; i++) {
+            context.setVariable(paramNames[i], args[i]);
+        }
+
+        // 评估表达式，并获取表达式的值作为 SpEL 解析结果。可能是一个方法参数，或者是基于一个或多个方法参数计算得出的值。
+        Object value = expression.getValue(context);
+        if (value == null) {
+            throw new UtilException("The parameter value cannot be null");
+        }
+        return value.toString();  // 返回值作为分布式锁的 key
     }
 }

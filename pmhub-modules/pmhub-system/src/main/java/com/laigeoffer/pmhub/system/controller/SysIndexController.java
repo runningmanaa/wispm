@@ -1,6 +1,6 @@
 package com.laigeoffer.pmhub.system.controller;
 
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ public class SysIndexController {
      * 系统基础配置
      */
     @Autowired
-    private pmhubConfig pmhubConfig;
+    private PmhubConfig pmhubConfig;
 
     /**
      * 访问首页，提示语

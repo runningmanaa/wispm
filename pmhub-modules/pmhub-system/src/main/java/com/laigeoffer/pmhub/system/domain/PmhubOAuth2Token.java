@@ -8,9 +8,9 @@ import lombok.Data;
  * @date 2024/01/10
  */
 @Data
-public class pmhubOAuth2Token {
+public class PmhubOAuth2Token {
 
-    public pmhubOAuth2Token(){
+    public PmhubOAuth2Token(){
         this.token_type = "bearer";
         this.scope = "profile";
     }

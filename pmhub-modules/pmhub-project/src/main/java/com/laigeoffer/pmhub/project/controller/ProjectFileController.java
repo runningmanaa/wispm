@@ -1,7 +1,7 @@
 package com.laigeoffer.pmhub.project.controller;
 
 import com.laigeoffer.pmhub.base.core.annotation.Anonymous;
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.core.domain.AjaxResult;
 import com.laigeoffer.pmhub.base.core.utils.StringUtils;
 import com.laigeoffer.pmhub.base.core.utils.uuid.Seq;
@@ -132,7 +132,7 @@ public class ProjectFileController {
     public AjaxResult downloadFileList(@RequestParam("projectFileIds") String projectFileIds, HttpServletResponse response) {
 
         // Linux版创建临时zip,总存放压缩文件  AcasConfig.getProfile()= D:/data/uploadPath/tmp.zip
-        String totalZip = pmhubConfig.getProfile() + "/tmp.zip";
+        String totalZip = PmhubConfig.getProfile() + "/tmp.zip";
         if (CollectionUtils.isEmpty(Arrays.asList(projectFileIds.split(",")))) {
             return error("未选择需要批量下载的文件");
         }

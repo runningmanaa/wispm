@@ -19,7 +19,7 @@ import java.util.Date;
  * @author zw
  */
 @Data
-public class pmhubAsync extends BaseEntity {
+public class PmhubAsync extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -82,7 +82,7 @@ public class pmhubAsync extends BaseEntity {
     @Excel(name = "附件地址")
     private String file;
 
-    public pmhubAsync(){
+    public PmhubAsync(){
 
     }
 
@@ -92,7 +92,7 @@ public class pmhubAsync extends BaseEntity {
      * @param asyncType
      * @param createBy
      */
-    public pmhubAsync(String asyncName, String asyncType, String createBy){
+    public PmhubAsync(String asyncName, String asyncType, String createBy){
         this.id = IdUtil.fastUUID();
         this.asyncName = asyncName;
         this.asyncType = asyncType;

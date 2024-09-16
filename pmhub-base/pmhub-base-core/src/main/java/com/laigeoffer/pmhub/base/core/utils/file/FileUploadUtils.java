@@ -1,6 +1,6 @@
 package com.laigeoffer.pmhub.base.core.utils.file;
 
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.constant.Constants;
 import com.laigeoffer.pmhub.base.core.exception.file.FileNameLengthLimitExceededException;
 import com.laigeoffer.pmhub.base.core.exception.file.FileSizeLimitExceededException;
@@ -43,7 +43,7 @@ public class FileUploadUtils {
     /**
      * 默认上传的地址
      */
-    private static String defaultBaseDir = pmhubConfig.getProfile();
+    private static String defaultBaseDir = PmhubConfig.getProfile();
 
     public static String getDefaultBaseDir() {
         return defaultBaseDir;
@@ -163,7 +163,7 @@ public class FileUploadUtils {
     }
 
     public static final String getPathFileName(String uploadDir, String fileName) throws IOException {
-        int dirLastIndex = pmhubConfig.getProfile().length() + 1;
+        int dirLastIndex = PmhubConfig.getProfile().length() + 1;
         String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
         return Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
     }

@@ -9,7 +9,7 @@ import com.github.pagehelper.PageInfo;
 import com.laigeoffer.pmhub.api.system.UserFeignService;
 import com.laigeoffer.pmhub.api.system.domain.dto.SysUserDTO;
 import com.laigeoffer.pmhub.api.workflow.DeployFeignService;
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.constant.SecurityConstants;
 import com.laigeoffer.pmhub.base.core.core.domain.R;
 import com.laigeoffer.pmhub.base.core.core.domain.dto.ApprovalSetDTO;
@@ -845,7 +845,7 @@ public class ProjectTaskServiceImpl extends ServiceImpl<ProjectTaskMapper, Proje
 
     @Override
     public void downloadTaskTemplate(HttpServletResponse response) throws IOException {
-        String filePath = pmhubConfig.getProfile() + "/template/taskTemplate.xlsx";
+        String filePath = PmhubConfig.getProfile() + "/template/taskTemplate.xlsx";
         response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
         FileUtils.setAttachmentResponseHeader(response, "任务模板.xlsx");
         FileUtils.writeBytes(filePath, response);

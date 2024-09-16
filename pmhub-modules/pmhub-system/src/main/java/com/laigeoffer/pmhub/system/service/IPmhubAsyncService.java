@@ -1,6 +1,6 @@
 package com.laigeoffer.pmhub.system.service;
 
-import com.laigeoffer.pmhub.system.domain.pmhubAsync;
+import com.laigeoffer.pmhub.system.domain.PmhubAsync;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author zw
  */
-public interface IpmhubAsyncService {
+public interface IPmhubAsyncService {
 
     /**
      * 创建异步任务记录
@@ -20,28 +20,28 @@ public interface IpmhubAsyncService {
      * @param createBy  创建者
      * @return id
      */
-    pmhubAsync addAsyncJob(String asyncName, String asyncType, String createBy);
+    PmhubAsync addAsyncJob(String asyncName, String asyncType, String createBy);
 
     /**
      * 更新任务状态
      * @param pmhubAsync 任务信息
      */
-    void updateAsyncJob(pmhubAsync pmhubAsync);
+    void updateAsyncJob(PmhubAsync pmhubAsync);
 
 
     /**
      * 查询异步任务信息
      * @param pmhubAsync
-     * @return {@link List}<{@link pmhubAsync}>
+     * @return {@link List}<{@link PmhubAsync}>
      */
-    List<pmhubAsync> list(pmhubAsync pmhubAsync);
+    List<PmhubAsync> list(PmhubAsync pmhubAsync);
 
     /**
      * 查询单条异步任务信息
      * @param id id
-     * @return {@link List}<{@link pmhubAsync}>
+     * @return {@link List}<{@link PmhubAsync}>
      */
-    pmhubAsync load(String id);
+    PmhubAsync load(String id);
 
     /**
      * 删除

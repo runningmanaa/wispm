@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2024/01/10
  */
 @Data
-public class pmhubOAuth2 {
+public class PmhubOAuth2 {
 
     /**
      * 组装Authorize接口的url参数

@@ -12,8 +12,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 @EnableDiscoveryClient
-public class pmhubGatewayApplication {
+public class PmHubGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(pmhubGatewayApplication.class, args);
+        SpringApplication.run(PmHubGatewayApplication.class, args);
     }
 }

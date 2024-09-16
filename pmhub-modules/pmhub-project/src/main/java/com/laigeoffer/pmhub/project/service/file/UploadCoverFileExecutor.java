@@ -1,6 +1,6 @@
 package com.laigeoffer.pmhub.project.service.file;
 
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.core.domain.model.LoginUser;
 import com.laigeoffer.pmhub.base.core.exception.ServiceException;
 import com.laigeoffer.pmhub.base.core.utils.file.MimeTypeUtils;
@@ -29,7 +29,7 @@ public class UploadCoverFileExecutor extends UploadAbstractExecutor {
     @Transactional(rollbackFor = Exception.class)
     public FileVO upload(LoginUser user, MultipartFile file, String id) throws Exception {
         log.info("封面上传的项目id:{}", id);
-        String coverPath = ProjectFileUtil.uploadProjectFile(pmhubConfig.getProjectCoverPath(), file, MimeTypeUtils.DEFAULT_ALLOWED_EXTENSION);
+        String coverPath = ProjectFileUtil.uploadProjectFile(PmhubConfig.getProjectCoverPath(), file, MimeTypeUtils.DEFAULT_ALLOWED_EXTENSION);
         if (StringUtils.isBlank(coverPath)) {
             throw new ServiceException("上传文件异常，请联系管理员");
         }

@@ -1,7 +1,7 @@
 package com.laigeoffer.pmhub.system.service;
 
-import com.laigeoffer.pmhub.system.domain.pmhubOAuth2Client;
-import com.laigeoffer.pmhub.system.domain.pmhubOAuth2User;
+import com.laigeoffer.pmhub.system.domain.PmhubOAuth2Client;
+import com.laigeoffer.pmhub.system.domain.PmhubOAuth2User;
 
 /**
  * OAuth2 服务器
@@ -44,17 +44,17 @@ public interface IOAuth2Service {
     /**
      * 更加token获取用户信息
      * @param token token
-     * @return {@link pmhubOAuth2User}
+     * @return {@link PmhubOAuth2User}
      */
-    public pmhubOAuth2User getUser(String token);
+    public PmhubOAuth2User getUser(String token);
 
 
     /**
      * 获取客户端logo
      * @param clientId clientId
-     * @return {@link pmhubOAuth2User}
+     * @return {@link PmhubOAuth2User}
      */
-    public pmhubOAuth2Client getClientInfo(String clientId);
+    public PmhubOAuth2Client getClientInfo(String clientId);
 
 
     /**

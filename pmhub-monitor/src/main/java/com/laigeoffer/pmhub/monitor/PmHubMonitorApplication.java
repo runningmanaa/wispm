@@ -13,8 +13,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 @EnableAdminServer
 @SpringBootApplication
 @RefreshScope
-public class pmhubMonitorApplication {
+public class PmHubMonitorApplication {
     public static void main(String[] args) {
-        SpringApplication.run(pmhubMonitorApplication.class, args);
+        SpringApplication.run(PmHubMonitorApplication.class, args);
     }
 }

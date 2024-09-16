@@ -12,8 +12,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  */
 @EnablePmFeignClients
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-public class pmhubAuthApplication {
+public class PmHubAuthApplication {
     public static void main(String[] args) {
-        SpringApplication.run(pmhubAuthApplication.class, args);
+        SpringApplication.run(PmHubAuthApplication.class, args);
     }
 }

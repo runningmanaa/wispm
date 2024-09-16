@@ -15,8 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnablePmFeignClients
 @EnableCustomSwagger2
 @SpringBootApplication
-public class pmhubProjectApplication {
+public class PmHubProjectApplication {
     public static void main(String[] args) {
-        SpringApplication.run(pmhubProjectApplication.class, args);
+        SpringApplication.run(PmHubProjectApplication.class, args);
     }
 }

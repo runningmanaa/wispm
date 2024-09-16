@@ -17,8 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableCustomSwagger2
 @EnableDistributedLock // 启用Redisson分布式锁
 @SpringBootApplication
-public class pmhubWorkflowApplication {
+public class PmHubWorkflowApplication {
     public static void main(String[] args) {
-        SpringApplication.run(pmhubWorkflowApplication.class, args);
+        SpringApplication.run(PmHubWorkflowApplication.class, args);
     }
 }

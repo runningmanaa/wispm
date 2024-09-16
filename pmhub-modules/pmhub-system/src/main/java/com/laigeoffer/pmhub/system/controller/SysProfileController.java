@@ -1,7 +1,7 @@
 package com.laigeoffer.pmhub.system.controller;
 
 import com.laigeoffer.pmhub.base.core.annotation.Log;
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.constant.UserConstants;
 import com.laigeoffer.pmhub.base.core.core.controller.BaseController;
 import com.laigeoffer.pmhub.base.core.core.domain.AjaxResult;
@@ -111,7 +111,7 @@ public class SysProfileController extends BaseController {
         if (!file.isEmpty()) {
             LoginUser loginUser = SecurityUtils.getLoginUser();
             // TODO: 2024.05.11 文件上传微服务调用
-            String avatar = FileUploadUtils.upload(pmhubConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION);
+            String avatar = FileUploadUtils.upload(PmhubConfig.getAvatarPath(), file, MimeTypeUtils.IMAGE_EXTENSION);
             if (userService.updateUserAvatar(loginUser.getUsername(), avatar)) {
                 AjaxResult ajax = AjaxResult.success();
                 ajax.put("imgUrl", avatar);

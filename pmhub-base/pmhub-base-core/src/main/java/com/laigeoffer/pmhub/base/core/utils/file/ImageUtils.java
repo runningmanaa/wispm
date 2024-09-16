@@ -1,6 +1,6 @@
 package com.laigeoffer.pmhub.base.core.utils.file;
 
-import com.laigeoffer.pmhub.base.core.config.pmhubConfig;
+import com.laigeoffer.pmhub.base.core.config.PmhubConfig;
 import com.laigeoffer.pmhub.base.core.constant.Constants;
 import com.laigeoffer.pmhub.base.core.utils.StringUtils;
 import org.apache.poi.util.IOUtils;
@@ -64,7 +64,7 @@ public class ImageUtils {
                 in = urlConnection.getInputStream();
             } else {
                 // 本机地址
-                String localPath = pmhubConfig.getProfile();
+                String localPath = PmhubConfig.getProfile();
                 String downloadPath = localPath + StringUtils.substringAfter(url, Constants.RESOURCE_PREFIX);
                 in = new FileInputStream(downloadPath);
             }

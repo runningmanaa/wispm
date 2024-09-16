@@ -5,11 +5,11 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.laigeoffer.pmhub.base.core.config.redis.RedisService;
 import com.laigeoffer.pmhub.base.core.core.domain.entity.SysUser;
-import com.laigeoffer.pmhub.system.domain.pmhubOAuth2Agree;
-import com.laigeoffer.pmhub.system.domain.pmhubOAuth2Client;
-import com.laigeoffer.pmhub.system.domain.pmhubOAuth2User;
-import com.laigeoffer.pmhub.system.mapper.pmhubOAuth2AgreeMapper;
-import com.laigeoffer.pmhub.system.mapper.pmhubOAuth2ClientMapper;
+import com.laigeoffer.pmhub.system.domain.PmhubOAuth2Agree;
+import com.laigeoffer.pmhub.system.domain.PmhubOAuth2Client;
+import com.laigeoffer.pmhub.system.domain.PmhubOAuth2User;
+import com.laigeoffer.pmhub.system.mapper.PmhubOAuth2AgreeMapper;
+import com.laigeoffer.pmhub.system.mapper.PmhubOAuth2ClientMapper;
 import com.laigeoffer.pmhub.system.service.IOAuth2Service;
 import com.laigeoffer.pmhub.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +21,10 @@ import java.util.concurrent.TimeUnit;
 public class OAuth2ServiceImpl implements IOAuth2Service {
 
     @Autowired
-    private pmhubOAuth2AgreeMapper pmhubOAuth2AgreeMapper;
+    private PmhubOAuth2AgreeMapper pmhubOAuth2AgreeMapper;
 
     @Autowired
-    private pmhubOAuth2ClientMapper pmhubOAuth2ClientMapper;
+    private PmhubOAuth2ClientMapper pmhubOAuth2ClientMapper;
 
     @Autowired
     private RedisService redisService;
@@ -53,7 +53,7 @@ public class OAuth2ServiceImpl implements IOAuth2Service {
     @Override
     public Boolean isAgree(Long userId, String clientId) {
 
-        QueryWrapper<pmhubOAuth2Agree> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<PmhubOAuth2Agree> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", userId);
         queryWrapper.eq("client_id", clientId);
 
@@ -71,7 +71,7 @@ public class OAuth2ServiceImpl implements IOAuth2Service {
     @Override
     public void agree(Long userId, String clientId) {
         if (ObjectUtil.isNotEmpty(clientId)){
-            pmhubOAuth2Agree pmhubOAuth2Agree = new pmhubOAuth2Agree();
+            PmhubOAuth2Agree pmhubOAuth2Agree = new PmhubOAuth2Agree();
             pmhubOAuth2Agree.setId(IdUtil.fastUUID());
 
             pmhubOAuth2Agree.setClientId(clientId);
@@ -121,14 +121,14 @@ public class OAuth2ServiceImpl implements IOAuth2Service {
     /**
      * 更加token获取用户信息
      * @param token token
-     * @return {@link pmhubOAuth2User}
+     * @return {@link PmhubOAuth2User}
      */
     @Override
-    public pmhubOAuth2User getUser(String token){
+    public PmhubOAuth2User getUser(String token){
         Long userId = redisService.getCacheObject(TOKEN_TITLE+token);
         if (ObjectUtil.isNotEmpty(userId)){
             SysUser sysUser = iSysUserService.selectUserById(userId);
-            pmhubOAuth2User pmhubOAuth2User = new pmhubOAuth2User();
+            PmhubOAuth2User pmhubOAuth2User = new PmhubOAuth2User();
             pmhubOAuth2User.setSub(sysUser.getUserName());
             pmhubOAuth2User.setName(sysUser.getNickName());
             pmhubOAuth2User.setPreferred_username(sysUser.getUserName());
@@ -144,14 +144,14 @@ public class OAuth2ServiceImpl implements IOAuth2Service {
      * 获取客户端logo
      *
      * @param clientId clientId
-     * @return {@link pmhubOAuth2User}
+     * @return {@link PmhubOAuth2User}
      */
     @Override
-    public pmhubOAuth2Client getClientInfo(String clientId) {
+    public PmhubOAuth2Client getClientInfo(String clientId) {
 
-        QueryWrapper<pmhubOAuth2Client> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<PmhubOAuth2Client> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("client_id", clientId);
-        pmhubOAuth2Client pmhubOAuth2Client =  pmhubOAuth2ClientMapper.selectOne(queryWrapper);
+        PmhubOAuth2Client pmhubOAuth2Client =  pmhubOAuth2ClientMapper.selectOne(queryWrapper);
         if (ObjectUtil.isNotEmpty(pmhubOAuth2Client)){
             pmhubOAuth2Client.setClientSecret(null);
         }
@@ -168,7 +168,7 @@ public class OAuth2ServiceImpl implements IOAuth2Service {
     @Override
     public Boolean checkClientSecret(String clientId, String clientSecret) {
 
-        QueryWrapper<pmhubOAuth2Client> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<PmhubOAuth2Client> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("client_id", clientId);
         return pmhubOAuth2ClientMapper.selectOne(queryWrapper).getClientSecret().equals(clientSecret);
 

@@ -1,7 +1,7 @@
 package com.laigeoffer.pmhub.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.laigeoffer.pmhub.system.domain.pmhubOAuth2Client;
+import com.laigeoffer.pmhub.system.domain.PmhubOAuth2Client;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,6 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @author zw
  */
 @Mapper
-public interface pmhubOAuth2ClientMapper extends BaseMapper<pmhubOAuth2Client> {
+public interface PmhubOAuth2ClientMapper extends BaseMapper<PmhubOAuth2Client> {
 
 }

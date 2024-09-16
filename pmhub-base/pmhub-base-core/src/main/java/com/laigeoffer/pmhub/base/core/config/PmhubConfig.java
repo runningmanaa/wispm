@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @ConfigurationProperties(prefix = "pmhub")
-public class pmhubConfig {
+public class PmhubConfig {
     /**
      * 上传路径
      */
@@ -45,7 +45,7 @@ public class pmhubConfig {
     }
 
     public void setProfile(String profile) {
-        pmhubConfig.profile = profile;
+        PmhubConfig.profile = profile;
     }
 
     public static boolean isAddressEnabled() {
@@ -53,7 +53,7 @@ public class pmhubConfig {
     }
 
     public void setAddressEnabled(boolean addressEnabled) {
-        pmhubConfig.addressEnabled = addressEnabled;
+        PmhubConfig.addressEnabled = addressEnabled;
     }
 
     public static String getCaptchaType() {
@@ -61,7 +61,7 @@ public class pmhubConfig {
     }
 
     public void setCaptchaType(String captchaType) {
-        pmhubConfig.captchaType = captchaType;
+        PmhubConfig.captchaType = captchaType;
     }
 
     /**
