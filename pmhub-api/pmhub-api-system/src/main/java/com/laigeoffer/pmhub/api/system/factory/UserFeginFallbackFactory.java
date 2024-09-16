@@ -42,7 +42,7 @@ public class UserFeginFallbackFactory implements FallbackFactory<UserFeignServic
 
             @Override
             public R<List<SysUserVO>> listOfInner(SysUserDTO sysUserDTO, String source) {
-                return R.fail("根据调教获取用户列表失败:" + throwable.getMessage());
+                return R.fail("根据条件获取用户列表失败:" + throwable.getMessage());
             }
 
             @Override
