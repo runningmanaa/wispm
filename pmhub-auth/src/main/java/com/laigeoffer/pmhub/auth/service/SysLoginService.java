@@ -47,7 +47,7 @@ public class SysLoginService {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户/密码必须填写");
             throw new ServiceException("用户/密码必须填写");
         }
-        // 密码如果不在指定范围内 错误
+        // 密码长度不在指定范围内 错误
         if (password.length() < UserConstants.PASSWORD_MIN_LENGTH
                 || password.length() > UserConstants.PASSWORD_MAX_LENGTH) {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户密码不在指定范围");

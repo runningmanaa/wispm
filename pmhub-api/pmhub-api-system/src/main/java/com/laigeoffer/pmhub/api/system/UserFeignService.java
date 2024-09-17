@@ -21,7 +21,6 @@ import java.util.List;
 @FeignClient(contextId = "userFeignService", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = UserFeginFallbackFactory.class)
 public interface UserFeignService {
 
-
     /**
      * 根据用户名获取当前用户信息
      */
@@ -39,7 +38,6 @@ public interface UserFeignService {
      */
     @PostMapping("/system/user/listOfInner")
     R<List<SysUserVO>> listOfInner(@RequestBody SysUserDTO sysUserDTO, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);
-
 
     /**
      * 注册用户信息

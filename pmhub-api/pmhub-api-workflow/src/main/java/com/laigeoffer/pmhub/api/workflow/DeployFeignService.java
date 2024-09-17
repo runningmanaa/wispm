@@ -1,5 +1,6 @@
 package com.laigeoffer.pmhub.api.workflow;
 
+import com.laigeoffer.pmhub.api.workflow.factory.DeployFeignFallbackFactory;
 import com.laigeoffer.pmhub.api.workflow.factory.ProcessFeignFallbackFactory;
 import com.laigeoffer.pmhub.base.core.constant.SecurityConstants;
 import com.laigeoffer.pmhub.base.core.constant.ServiceNameConstants;
@@ -17,7 +18,7 @@ import java.util.List;
  * @description 流程部署服务
  * @create 2024-04-24-22:38
  */
-@FeignClient(contextId = "deployFeignService", value = ServiceNameConstants.WORKFLOW_SERVICE, fallbackFactory = ProcessFeignFallbackFactory.class)
+@FeignClient(contextId = "deployFeignService", value = ServiceNameConstants.WORKFLOW_SERVICE, fallbackFactory = DeployFeignFallbackFactory.class)
 public interface DeployFeignService {
 
     /**
